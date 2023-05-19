@@ -1,0 +1,48 @@
+version: "3.9"
+networks:
+  grafana:
+volumes:
+  grafana_lib:
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_lib:/var/lib/grafana
+      - /etc/grafana
+      - /var/log/grafana
+      - /etc/grafana/provisioning
+    networks:
+      - grafana
+  loki:
+    image: grafana/loki
+    container_name: loki
+    command: --config.file=/mnt/config/loki-config.yaml
+    ports:
+      - 3100:3100
+    volumes:
+      - ./config/loki/:/mnt/config
+    networks:
+      - grafana
+  promtail:
+    image: grafana/promtail
+    container_name: promtail
+    command: --config.file=/mnt/config/promtail-config.yaml
+    volumes:
+      - ./config/promtail/:/mnt/config
+      - ./log:/var/log
+    networks:
+      - grafana
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    ports:
+      - 80:80
+      - 2003-2004:2003-2004
+      - 2023-2024:2023-2024
+      - 8125:8125/udp
+      - 8126:8126
+    networks:
+      - grafana
