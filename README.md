@@ -1,4 +1,4 @@
-# Project Title
+# Grafana Demo
 
 ## Table of Contents
 
