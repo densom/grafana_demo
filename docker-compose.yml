@@ -3,6 +3,7 @@ networks:
   grafana:
 volumes:
   grafana_lib:
+  lignator:
 services:
   grafana:
     image: grafana/grafana:latest
@@ -33,6 +34,7 @@ services:
     volumes:
       - ./config/promtail/:/mnt/config
       - ./log:/var/log
+      - lignator:/var/log2
     networks:
       - grafana
   graphite:
@@ -44,5 +46,17 @@ services:
       - 2023-2024:2023-2024
       - 8125:8125/udp
       - 8126:8126
+    networks:
+      - grafana
+  loggenerator:
+    # docker run --rm -it  grafana_demo-loggenerator sh
+    build:
+      context: ./lignator/src/
+      dockerfile: Dockerfile
+    volumes:
+      - lignator:/app/logs
+    command: "-i -t '[$${utcnow()}] - [$${randomitem(INFO ,WARN ,ERROR)}] - I am a log for request with id: $${uuid}'"
+    depends_on:
+      - promtail
     networks:
       - grafana

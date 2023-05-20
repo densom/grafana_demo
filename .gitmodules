@@ -1,0 +1,3 @@
+[submodule "lignator"]
+	path = lignator
+	url = https://github.com/microsoft/lignator.git

@@ -18,3 +18,21 @@ scrape_configs:
     labels:
       job: varlogs
       __path__: /var/log/*.csv
+- job_name: lignator_job
+  pipeline_stages:
+  - match:
+      selector: '{job="lignatorlogs"}'
+      # selector: ''
+      stages:
+      - regex: 
+          # extract severity from message
+          expression: '\[(?P<severity>[a-zA-Z]+\s*)\]'
+      - labels:
+          severity:
+    
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: lignatorlogs
+      __path__: /var/log2/*.log
