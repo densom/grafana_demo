@@ -9,30 +9,23 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-- job_name: csv_demo
-  # pipeline_stages:
-  # - 
-  static_configs:
-  - targets:
-      - localhost
-    labels:
-      job: varlogs
-      __path__: /var/log/*.csv
-- job_name: lignator_job
+- job_name: log-generator
   pipeline_stages:
   - match:
-      selector: '{job="lignatorlogs"}'
-      # selector: ''
+      selector: '{job="log-generator"}'
       stages:
       - regex: 
-          # extract severity from message
-          expression: '\[(?P<severity>[a-zA-Z]+\s*)\]'
+          # extract http response from message
+          expression: '^(?P<ip>.*) - - \[(?P<timestamp>(.*))] \"(?P<http_verb>\S*) \S* \S*\" (?P<http_status_code>.*) '
       - labels:
-          severity:
-    
+          # I don't want the timestamp to become labels, but it is relevant.  Not sure what to do with this yet.
+          # timestamp:
+          http_verb:
+          http_status_code:
+
   static_configs:
   - targets:
       - localhost
     labels:
-      job: lignatorlogs
-      __path__: /var/log2/*.log
+      job: log-generator
+      __path__: /var/log/*
