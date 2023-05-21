@@ -7,7 +7,7 @@
 
 ## About <a name = "about"></a>
 
-Simple docker compose set of grafana, loki, promtail, and graphite.  Also, a [log generator](https://github.com/microsoft/lignator.git) pushes random log
+Simple docker compose set of grafana, loki, promtail, and graphite.  Also, a [log generator](https://pypi.org/project/log-generator/) pushes random log
 data to loki via a promtail sidecar for demonsttrating pipelines.
 
 ### Prerequisites
