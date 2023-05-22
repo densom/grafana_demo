@@ -28,4 +28,4 @@ scrape_configs:
       - localhost
     labels:
       job: log-generator
-      __path__: /var/log/*
+      __path__: /var/log/apache_access
