@@ -20,3 +20,7 @@ End with an example of getting some data out of the system or using it for a lit
 ## Usage <a name = "usage"></a>
 
 `docker compose up`
+
+Navigate to Grafana at http://localhost:3000.
+
+Add a datasource in Grafana of type "Loki" and point it to http://loki:3100/
