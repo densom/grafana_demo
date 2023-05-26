@@ -10,6 +10,8 @@
 Simple docker compose set of grafana, loki, promtail, and graphite.  Also, a [log generator](https://pypi.org/project/log-generator/) pushes random log
 data to loki via a promtail sidecar for demonsttrating pipelines.
 
+![alt](https://lucid.app/publicSegments/view/368da1ee-3204-4d86-8994-cf1be93142d3/image.png)
+
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
