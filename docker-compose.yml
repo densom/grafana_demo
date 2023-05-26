@@ -36,17 +36,6 @@ services:
       - logs:/var/log
     networks:
       - grafana
-  graphite:
-    image: graphiteapp/graphite-statsd
-    container_name: graphite
-    ports:
-      - 80:80
-      - 2003-2004:2003-2004
-      - 2023-2024:2023-2024
-      - 8125:8125/udp
-      - 8126:8126
-    networks:
-      - grafana
   log-generator:
     # docker run --rm -it  grafana_demo-loggenerator sh
     build:
