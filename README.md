@@ -15,14 +15,16 @@ data to loki via a promtail sidecar for demonsttrating pipelines.
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
+- (optional) [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 
 End with an example of getting some data out of the system or using it for a little demo.
 
 ## Usage <a name = "usage"></a>
 
-`docker compose up`
-
-Navigate to Grafana at http://localhost:3000.
-
-Add a datasource in Grafana of type "Loki" and point it to http://loki:3100/
+* `docker compose up`
+* Create the Loki datasource (one of the following):
+    * Run `.\create-datasource.ps1`
+    * Use the snippet in the [testing.http](testing.http) along with the recommended [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) to create the datasource.
+    * (optional) If you did not use the automation above, you can manually add a datasource in Grafana of type "Loki" and point it to http://loki:3100/.
+* Navigate to Grafana at http://localhost:3000.
