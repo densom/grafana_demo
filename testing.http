@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3000
+@user = admin
+@password = admin
+
+### Create the datasource
+POST {{baseUrl}}/api/datasources HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic {{user}}:{{password}}
+
+{
+  "name":"Loki",
+  "type":"loki",
+  "url":"http://loki:3100",
+  "access":"proxy",
+  "user":"",
+  "database":"",
+  "basicAuth":false
+}
