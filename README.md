@@ -7,10 +7,10 @@
 
 ## About <a name = "about"></a>
 
-Simple docker compose set of grafana, loki, promtail, and graphite.  Also, a [log generator](https://pypi.org/project/log-generator/) pushes random log
-data to loki via a promtail sidecar for demonsttrating pipelines.
+Simple docker compose set of Grafana, Loki, and Promtail.  Also, a [log generator](https://pypi.org/project/log-generator/) pushes random log
+data to Loki via a Promtail sidecar for demonstrating pipelines.
 
-![alt](https://lucid.app/publicSegments/view/368da1ee-3204-4d86-8994-cf1be93142d3/image.png)
+![architecture diagram](https://lucid.app/publicSegments/view/368da1ee-3204-4d86-8994-cf1be93142d3/image.png)
 
 ### Prerequisites
 
