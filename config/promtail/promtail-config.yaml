@@ -16,12 +16,13 @@ scrape_configs:
       stages:
       - regex: 
           # extract http response from message
-          expression: '^(?P<ip>.*) - - \[(?P<timestamp>(.*))] \"(?P<http_verb>\S*) \S* \S*\" (?P<http_status_code>.*) '
+          expression: '^(?P<ip>.*) - - \[(?P<timestamp>(.*))] \"(?P<log_level>\S*) (?P<http_verb>\S*) \S* \S*\" (?P<http_status_code>.*) '
       - labels:
           # I don't want the timestamp to become labels, but it is relevant.  Not sure what to do with this yet.
           # timestamp:
           http_verb:
           http_status_code:
+          log_level:
 
   static_configs:
   - targets:

@@ -1,6 +1,6 @@
 name: Apache General Access
 file: /var/log/httpd/apache_access
-format: "{log_ip} - - [{log_time} +0000] \"{log_method} {log_path} HTTP/1.1\" {log_status} {log_bytes}"
+format: "{log_ip} - - [{log_time} +0000] \"{log_level} {log_method} {log_path} HTTP/1.1\" {log_status} {log_bytes}"
 frequency:
   seconds: 5
 offset:
@@ -37,3 +37,15 @@ fields:
     type: integer
     min: 2000
     max: 5000
+  log_level:
+    type: chance
+    # repeat: 11
+    # change: 0.25
+    # value: INFO
+    choices:
+      - option: WARN
+        weight: 0.2
+      - option: ERROR
+        weight: 0.05
+      - option: INFO
+        weight: 0.75
