@@ -28,3 +28,7 @@ End with an example of getting some data out of the system or using it for a lit
     * Use the snippet in the [create-datasource.http](create-datasource.http) along with the recommended [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) to create the datasource.
     * (optional) If you did not use the automation above, you can manually add a datasource in Grafana of type "Loki" and point it to http://loki:3100/.
 * Navigate to Grafana at http://localhost:3000.
+
+## Pushing Windows Event Log <a name = "eventlog"></a>
+
+Run `./bin/run-promtail-local.bat`
